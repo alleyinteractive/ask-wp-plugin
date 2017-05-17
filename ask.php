@@ -3,7 +3,7 @@
 Plugin Name: Ask
 Plugin URI: https://coralproject.net
 Description: A plugin to easily embed Ask Forms and Ask Galleries in WordPress
-Version: 1.0
+Version: 1.0.1
 Author: The Coral Project
 Author URI: https://coralproject.net
 License: Apache 2.0
@@ -28,7 +28,7 @@ class Ask_Plugin {
 	/**
 	 * Registers the functions to create the settings page.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.1
 	 */
 	public function create_settings_page() {
 		add_menu_page( 'Ask Forms', 'Ask Forms', 'manage_options', 'ask-forms', array(
@@ -50,7 +50,7 @@ class Ask_Plugin {
 	/**
 	 * Registers the settings sections.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.1
 	 */
 	public function setup_sections() {
 		add_settings_section( 'integration', 'About Ask', array( $this, 'section_callback' ), 'ask-settings' );
@@ -59,7 +59,7 @@ class Ask_Plugin {
 	/**
 	 * Register the settings fields.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.1
 	 */
 	public function setup_fields() {
 		$fields = array(
@@ -98,7 +98,7 @@ class Ask_Plugin {
 	 * Creates the markup for the settings page.
 	 *
 	 * @internal
-	 * @since 1.0.0
+	 * @since 1.0.1
 	 *
 	 * @param array $arguments The data sent from {@see add_settings_section()}.
 	 */
@@ -127,7 +127,7 @@ class Ask_Plugin {
 	/**
 	 * Output the settings field for the form's base URL.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.1
 	 *
 	 * @param array $arguments Data sent from {@see add_settings_field()}.
 	 */
@@ -140,7 +140,7 @@ class Ask_Plugin {
 	/**
 	 * Output the settings field for the form's admin URL.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.1
 	 *
 	 * @param array $arguments Data sent from {@see add_settings_field()}.
 	 */
@@ -152,7 +152,7 @@ class Ask_Plugin {
 	/**
 	 * Generates the markup for the settings page.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.1
 	 */
 	public function render_settings_page() { ?>
 		<div class="wrap">
@@ -170,7 +170,7 @@ class Ask_Plugin {
 	/**
 	 * Generates the output for the plugin's admin page.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.1
 	 */
 	public function render_admin_page() { ?>
 		<div class="wrap">
@@ -182,7 +182,7 @@ class Ask_Plugin {
 	/**
 	 * Generates output for the shortcode.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.1
 	 *
 	 * @param string $type   The type of shortcode to generate. Accepts 'form' or 'gallery'.
 	 * @param array	 $attrs  {
@@ -207,7 +207,7 @@ class Ask_Plugin {
 	/**
 	 * Generate output for the 'ask-form' shortcode.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.1
 	 * @see Ask_Plugin::render_shortcode()
 	 *
 	 * @param array $attrs The options to pass to render_shortcode().
@@ -220,7 +220,7 @@ class Ask_Plugin {
 	/**
 	 * Generate output for the 'ask-gallery' shortcode.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.1
 	 * @see   Ask_Plugin::render_shortcode()
 	 *
 	 * @param array $attrs The options to pass to render_shortcode().
