@@ -2,6 +2,8 @@
 <ruleset name="Coral Project - Ask">
 	<description>PHP_CodeSniffer standard for the Coral Project - Ask plugin</description>
 	<file>ask.php</file>
-	<rule ref="WordPress" />
-	<rule ref="WordPress-VIP" />
+	<rule ref="WordPress">
+		<exclude name="Squiz.Commenting.FunctionComment.ScalarTypeHintMissing"/>
+		<exclude name="WordPress.WP.EnqueuedResources.NonEnqueuedScript" />
+	</rule>
 </ruleset>

@@ -104,27 +104,28 @@ class Ask_Plugin {
 	 *
 	 * @param array $arguments The data sent from {@see add_settings_section()}.
 	 */
-	public function section_callback( $arguments ) { ?>
-		<p>Ask is a form tool, built specifically for journalists.</p>
-		<p>Ask lets you easily create embeddable forms, manage submissions, and display galleries of the best responses. It’s fast, flexible, and you control the design and the data.</p>
-		<p>You can find out how to install and manage Ask <a href="https://docs.coralproject.net/products/ask/">here</a>.
-		</p>
-		<p>Ask is an open source product brought to you by The Coral Project. Find out more about Coral and the tools we build
-			<a href="https://coralproject.net">here</a>.</p>
+	public function section_callback( $arguments ) {
+		?>
+			<p>Ask is a form tool, built specifically for journalists.</p>
+			<p>Ask lets you easily create embeddable forms, manage submissions, and display galleries of the best responses. It’s fast, flexible, and you control the design and the data.</p>
+			<p>You can find out how to install and manage Ask <a href="https://docs.coralproject.net/products/ask/">here</a>.
+			</p>
+			<p>Ask is an open source product brought to you by The Coral Project. Find out more about Coral and the tools we build
+				<a href="https://coralproject.net">here</a>.</p>
 
-		<h2>Instructions</h2>
-		<p>Use your Ask shortcode in any post or page where you want to embed an Ask form:</p>
-		<p><code>[ask-form id="1234567890abcdefghij"]</code></p>
-		<p>You can find your Ask form ID in the URL of your form, ex:
-			<strong>https://ask.yourdomain.com/forms/1234567890abcdefghij</strong></p>
+			<h2>Instructions</h2>
+			<p>Use your Ask shortcode in any post or page where you want to embed an Ask form:</p>
+			<p><code>[ask-form id="1234567890abcdefghij"]</code></p>
+			<p>You can find your Ask form ID in the URL of your form, ex:
+				<strong>https://ask.yourdomain.com/forms/1234567890abcdefghij</strong></p>
 
-		<h2>Ask Settings</h2>
-		<p>Questions/feedback? Reach out to us on <a href="https://twitter.com/coralproject">Twitter</a> or join our
-			<a href="https://community.coralproject.net/">Community</a>.
-		<p>You are using the version <?php echo esc_html( get_plugin_data( __FILE__ )['Version'] ); ?> of the Ask WordPress Plugin. View the code, documentation, and latest releases
-			<a href="https://github.com/coralproject/ask-wp-plugin">here</a>.</p>
-
-	<?php }
+			<h2>Ask Settings</h2>
+			<p>Questions/feedback? Reach out to us on <a href="https://twitter.com/coralproject">Twitter</a> or join our
+				<a href="https://community.coralproject.net/">Community</a>.
+			<p>You are using the version <?php echo esc_html( get_plugin_data( __FILE__ )['Version'] ); ?> of the Ask WordPress Plugin. View the code, documentation, and latest releases
+				<a href="https://github.com/coralproject/ask-wp-plugin">here</a>.</p>
+		<?php
+	}
 
 	/**
 	 * Output the settings field for the form's base URL.
@@ -133,10 +134,12 @@ class Ask_Plugin {
 	 *
 	 * @param array $arguments Data sent from {@see add_settings_field()}.
 	 */
-	public function base_url_callback( $arguments ) { ?>
-		<p>To use Ask forms in WordPress, you will need to set a Form Base URL, which is where your forms are stored:</p>
-		<input style="width: 600px; height: 40px;" name="base_url" placeholder="<?php echo esc_attr( $arguments['placeholder'] ); ?>" id="base_url" type="url" value="<?php echo esc_url( get_option( 'base_url' ) ); ?>" />
-	<?php }
+	public function base_url_callback( $arguments ) {
+		?>
+			<p>To use Ask forms in WordPress, you will need to set a Form Base URL, which is where your forms are stored:</p>
+			<input style="width: 600px; height: 40px;" name="base_url" placeholder="<?php echo esc_attr( $arguments['placeholder'] ); ?>" id="base_url" type="url" value="<?php echo esc_url( get_option( 'base_url' ) ); ?>" />
+		<?php
+	}
 
 
 	/**
@@ -146,40 +149,46 @@ class Ask_Plugin {
 	 *
 	 * @param array $arguments Data sent from {@see add_settings_field()}.
 	 */
-	public function admin_url_callback( $arguments ) { ?>
-		<p>You can also optionally manage your forms in WordPress, by providing the URL where your Ask admin is located:</p>
-		<input style="width: 600px; height: 40px;" name="admin_url" placeholder="<?php echo esc_attr( $arguments['placeholder'] ); ?>" id="admin_url" type="url" value="<?php echo esc_url( get_option( 'admin_url' ) ); ?>" />
-	<?php }
+	public function admin_url_callback( $arguments ) {
+		?>
+			<p>You can also optionally manage your forms in WordPress, by providing the URL where your Ask admin is located:</p>
+			<input style="width: 600px; height: 40px;" name="admin_url" placeholder="<?php echo esc_attr( $arguments['placeholder'] ); ?>" id="admin_url" type="url" value="<?php echo esc_url( get_option( 'admin_url' ) ); ?>" />
+		<?php
+	}
 
 	/**
 	 * Generates the markup for the settings page.
 	 *
 	 * @since 1.0.1
 	 */
-	public function render_settings_page() { ?>
-		<div class="wrap">
-			<h2>Ask Settings</h2>
-			<form method="post" action="options.php">
-				<?php
-				settings_fields( 'ask-settings' );
-				do_settings_sections( 'ask-settings' );
-				submit_button();
-				?>
-			</form>
-		</div>
-	<?php }
+	public function render_settings_page() {
+		?>
+			<div class="wrap">
+				<h2>Ask Settings</h2>
+				<form method="post" action="options.php">
+					<?php
+					settings_fields( 'ask-settings' );
+					do_settings_sections( 'ask-settings' );
+					submit_button();
+					?>
+				</form>
+			</div>
+		<?php
+	}
 
 	/**
 	 * Generates the output for the plugin's admin page.
 	 *
 	 * @since 1.0.1
 	 */
-	public function render_admin_page() { ?>
-		<div class="wrap">
-			<h2>Ask Admin</h2>
-			<iframe width="100%" height="600px" src="<?php echo esc_url( get_option( 'admin_url' ) ); ?>" frameborder="0" hspace="0" vspace="0" marginheight="0" marginwidth="0"></iframe>
-		</div>
-	<?php }
+	public function render_admin_page() {
+		?>
+			<div class="wrap">
+				<h2>Ask Admin</h2>
+				<iframe width="100%" height="600px" src="<?php echo esc_url( get_option( 'admin_url' ) ); ?>" frameborder="0" hspace="0" vspace="0" marginheight="0" marginwidth="0"></iframe>
+			</div>
+		<?php
+	}
 
 	/**
 	 * Generates output for the shortcode.
@@ -199,7 +208,7 @@ class Ask_Plugin {
 	public function render_shortcode( $type, $attrs ) {
 		$height = isset( $attrs['height'] ) ? $attrs['height'] : '580';
 		$id     = isset( $attrs['id'] ) ? $attrs['id'] : '';
-		if ( isset( $attrs['iframe'] ) && $attrs['iframe'] == 'true' ) {
+		if ( isset( $attrs['iframe'] ) && 'true' == $attrs['iframe'] ) {
 			return '<iframe width="100%" height="' . absint( $height ) . '" src="' . esc_url( get_option( 'base_url' ) ) . sanitize_text_field( $attrs['id'] ) . '.html" frameborder="0" hspace="0" vspace="0" marginheight="0" marginwidth="0"></iframe>';
 		} else {
 			return '<div id="ask-' . esc_attr( $type ) . '"></div><script src="' . esc_url( get_option( 'base_url' ) ) . sanitize_text_field( $id ) . '.js"></script>';
@@ -231,7 +240,6 @@ class Ask_Plugin {
 	public function render_gallery_shortcode( $attrs ) {
 		return $this->render_shortcode( 'gallery', $attrs );
 	}
-
 }
 
 new Ask_Plugin();
