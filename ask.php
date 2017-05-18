@@ -108,24 +108,19 @@ class Ask_Plugin {
 	 */
 	public function section_callback( $arguments ) {
 		?>
-			<p>Ask is a form tool, built specifically for journalists.</p>
-			<p>Ask lets you easily create embeddable forms, manage submissions, and display galleries of the best responses. It’s fast, flexible, and you control the design and the data.</p>
-			<p>You can find out how to install and manage Ask <a href="https://docs.coralproject.net/products/ask/">here</a>.
-			</p>
-			<p>Ask is an open source product brought to you by The Coral Project. Find out more about Coral and the tools we build
-				<a href="https://coralproject.net">here</a>.</p>
+		<p>Ask is a form tool, built specifically for journalists.</p>
+		<p>Ask lets you easily create embeddable forms, manage submissions, and display galleries of the best responses. It’s fast, flexible, and you control the design and the data.</p>
+		<p>You can find out how to install and manage Ask <a href="https://docs.coralproject.net/products/ask/">here</a>.</p>
+		<p>Ask is an open source product brought to you by The Coral Project. Find out more about Coral and the tools we build <a href="https://coralproject.net">here</a>.</p>
 
-			<h2>Instructions</h2>
-			<p>Use your Ask shortcode in any post or page where you want to embed an Ask form:</p>
-			<p><code>[ask-form id="1234567890abcdefghij"]</code></p>
-			<p>You can find your Ask form ID in the URL of your form, ex:
-				<strong>https://ask.yourdomain.com/forms/1234567890abcdefghij</strong></p>
+		<h2><?php esc_html_e( 'Instructions', 'coral_ask' ); ?></h2>
+		<p>Use your Ask shortcode in any post or page where you want to embed an Ask form:</p>
+		<p><code>[ask-form id="1234567890abcdefghij"]</code></p>
+		<p>You can find your Ask form ID in the URL of your form, ex: <strong>https://ask.yourdomain.com/forms/1234567890abcdefghij</strong></p>
 
-			<h2>Ask Settings</h2>
-			<p>Questions/feedback? Reach out to us on <a href="https://twitter.com/coralproject">Twitter</a> or join our
-				<a href="https://community.coralproject.net/">Community</a>.
-			<p>You are using the version <?php echo esc_html( get_plugin_data( __FILE__ )['Version'] ); ?> of the Ask WordPress Plugin. View the code, documentation, and latest releases
-				<a href="https://github.com/coralproject/ask-wp-plugin">here</a>.</p>
+		<h2><?php esc_html_e( 'Ask Settings', 'coral_ask' ); ?></h2>
+		<p>Questions/feedback? Reach out to us on <a href="https://twitter.com/coralproject">Twitter</a> or join our <a href="https://community.coralproject.net/">Community</a>.</p>
+		<p>You are using the version <?php echo esc_html( get_plugin_data( __FILE__ )['Version'] ); ?> of the Ask WordPress Plugin. View the code, documentation, and latest releases <a href="https://github.com/coralproject/ask-wp-plugin">here</a>.</p>
 		<?php
 	}
 
@@ -138,8 +133,15 @@ class Ask_Plugin {
 	 */
 	public function base_url_callback( $arguments ) {
 		?>
-			<p>To use Ask forms in WordPress, you will need to set a Form Base URL, which is where your forms are stored:</p>
-			<input style="width: 600px; height: 40px;" name="coral_ask_base_url" placeholder="<?php echo esc_attr( $arguments['placeholder'] ); ?>" id="coral_ask_base_url" type="url" value="<?php echo esc_url( get_option( 'coral_ask_base_url' ) ); ?>" />
+		<p>To use Ask forms in WordPress, you will need to set a Form Base URL, which is where your forms are stored:</p>
+		<input
+			style="width: 600px; height: 40px;"
+			name="coral_ask_base_url"
+			placeholder="<?php echo esc_attr( $arguments['placeholder'] ); ?>"
+			id="coral_ask_base_url"
+			type="url"
+			value="<?php echo esc_url( get_option( 'coral_ask_base_url' ) ); ?>"
+		/>
 		<?php
 	}
 
@@ -153,8 +155,15 @@ class Ask_Plugin {
 	 */
 	public function admin_url_callback( $arguments ) {
 		?>
-			<p>You can also optionally manage your forms in WordPress, by providing the URL where your Ask admin is located:</p>
-			<input style="width: 600px; height: 40px;" name="coral_ask_admin_url" placeholder="<?php echo esc_attr( $arguments['placeholder'] ); ?>" id="coral_ask_admin_url" type="url" value="<?php echo esc_url( get_option( 'coral_ask_admin_url' ) ); ?>" />
+		<p>You can also optionally manage your forms in WordPress, by providing the URL where your Ask admin is located:</p>
+		<input
+			style="width: 600px; height: 40px;"
+			name="coral_ask_admin_url"
+			placeholder="<?php echo esc_attr( $arguments['placeholder'] ); ?>"
+			id="coral_ask_admin_url"
+			type="url"
+			value="<?php echo esc_url( get_option( 'coral_ask_admin_url' ) ); ?>"
+		/>
 		<?php
 	}
 
@@ -165,16 +174,16 @@ class Ask_Plugin {
 	 */
 	public function render_settings_page() {
 		?>
-			<div class="wrap">
-				<h2><?php esc_html_e( 'Ask Settings', 'coral_ask' ) ?></h2>
-				<form method="post" action="options.php">
-					<?php
-					settings_fields( 'ask-settings' );
-					do_settings_sections( 'ask-settings' );
-					submit_button();
-					?>
-				</form>
-			</div>
+		<div class="wrap">
+			<h2><?php esc_html_e( 'Ask Settings', 'coral_ask' ) ?></h2>
+			<form method="post" action="options.php">
+				<?php
+				settings_fields( 'ask-settings' );
+				do_settings_sections( 'ask-settings' );
+				submit_button();
+				?>
+			</form>
+		</div>
 		<?php
 	}
 
@@ -185,10 +194,10 @@ class Ask_Plugin {
 	 */
 	public function render_admin_page() {
 		?>
-			<div class="wrap">
-				<h2><?php esc_html_e( 'Ask Admin', 'coral_ask' ) ?></h2>
-				<iframe width="100%" height="600px" src="<?php echo esc_url( get_option( 'coral_ask_admin_url' ) ); ?>" frameborder="0" hspace="0" vspace="0" marginheight="0" marginwidth="0"></iframe>
-			</div>
+		<div class="wrap">
+			<h2><?php esc_html_e( 'Ask Admin', 'coral_ask' ) ?></h2>
+			<iframe width="100%" height="600px" src="<?php echo esc_url( get_option( 'coral_ask_admin_url' ) ); ?>" frameborder="0" hspace="0" vspace="0" marginheight="0" marginwidth="0"></iframe>
+		</div>
 		<?php
 	}
 
