@@ -1,13 +1,15 @@
 <?php
-/*
-Plugin Name: Ask
-Plugin URI: https://coralproject.net
-Description: A plugin to easily embed Ask Forms and Ask Galleries in WordPress
-Version: 1.0.1
-Author: The Coral Project
-Author URI: https://coralproject.net
-License: Apache 2.0
-*/
+/**
+ * Plugin Name: Ask
+ * Plugin URI: https://coralproject.net
+ * Description: A plugin to easily embed Ask Forms and Ask Galleries in WordPress
+ * Version: 1.0.1
+ * Author: The Coral Project
+ * Author URI: https://coralproject.net
+ * License: Apache 2.0
+ *
+ * @package Ask_Plugin
+ */
 
 /**
  * Class Ask_Plugin
