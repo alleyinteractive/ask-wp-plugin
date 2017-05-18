@@ -253,12 +253,29 @@ class Ask_Plugin {
 	 * @return string The HTML output.
 	 */
 	public function render_shortcode( $type, $attrs ) {
-		$height = isset( $attrs['height'] ) ? $attrs['height'] : '580';
-		$id     = isset( $attrs['id'] ) ? $attrs['id'] : '';
+		// Base URL and ID must be set.
+		if ( empty( get_option( 'coral_ask_base_url' ) ) || empty( $attrs['id'] ) ) {
+			return '';
+		}
+
+		// Height defaults to 580.
+		$height = ! empty( $attrs['height'] ) && is_numeric( $attrs['height'] ) ? $attrs['height'] : '580';
+
+		// Set up item URL.
+		$item_url_base = trailingslashit( get_option( 'coral_ask_base_url' ) ) . trim( $attrs['id'] );
+
 		if ( isset( $attrs['iframe'] ) && 'true' == $attrs['iframe'] ) {
-			return '<iframe width="100%" height="' . absint( $height ) . '" src="' . esc_url( get_option( 'coral_ask_base_url' ) ) . sanitize_text_field( $attrs['id'] ) . '.html" frameborder="0" hspace="0" vspace="0" marginheight="0" marginwidth="0"></iframe>';
+			return sprintf(
+				'<iframe width="100%" height="%d" src="%s" frameborder="0" hspace="0" vspace="0" marginheight="0" marginwidth="0"></iframe>',
+				absint( $height ),
+				esc_url( $item_url_base . '.html' )
+			);
 		} else {
-			return '<div id="ask-' . esc_attr( $type ) . '"></div><script src="' . esc_url( get_option( 'coral_ask_base_url' ) ) . sanitize_text_field( $id ) . '.js"></script>';
+			return sprintf(
+				'<div id="ask-%s"></div><script async src="%s"></script>',
+				esc_attr( $type ),
+				esc_url( $item_url_base . '.js' )
+			);
 		}
 	}
 
