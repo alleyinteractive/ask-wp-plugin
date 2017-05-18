@@ -161,14 +161,7 @@ class Ask_Plugin {
 	public function base_url_callback( $arguments ) {
 		?>
 		<p><?php esc_html_e( 'To use Ask forms in WordPress, you will need to set a Form Base URL, which is where your forms are stored:', 'coral-project-ask' ); ?></p>
-		<input
-			style="width: 600px; height: 40px;"
-			name="coral_ask_base_url"
-			placeholder="<?php echo esc_attr( $arguments['placeholder'] ); ?>"
-			id="coral_ask_base_url"
-			type="url"
-			value="<?php echo esc_url( get_option( 'coral_ask_base_url' ) ); ?>"
-		/>
+		<?php $this->render_settings_input_field( 'coral_ask_base_url', $arguments['placeholder'] ); ?>
 		<?php
 	}
 
@@ -183,13 +176,27 @@ class Ask_Plugin {
 	public function admin_url_callback( $arguments ) {
 		?>
 		<p><?php esc_html_e( 'You can also optionally manage your forms in WordPress, by providing the URL where your Ask admin is located:', 'coral-project-ask' ); ?></p>
+		<?php $this->render_settings_input_field( 'coral_ask_admin_url', $arguments['placeholder'] ); ?>
+		<?php
+	}
+
+	/**
+	 * Prints input field for settings.
+	 *
+	 * @since 1.0.1
+	 *
+	 * @param string $option_id    Field option id.
+	 * @param string $placeholder  Placeholder text.
+	 */
+	public function render_settings_input_field( $option_id, $placeholder ) {
+		?>
 		<input
 			style="width: 600px; height: 40px;"
-			name="coral_ask_admin_url"
-			placeholder="<?php echo esc_attr( $arguments['placeholder'] ); ?>"
-			id="coral_ask_admin_url"
+			name="<?php echo esc_attr( $option_id ); ?>"
+			placeholder="<?php echo esc_attr( $placeholder ); ?>"
+			id="<?php echo esc_attr( $option_id ); ?>"
 			type="url"
-			value="<?php echo esc_url( get_option( 'coral_ask_admin_url' ) ); ?>"
+			value="<?php echo esc_url( get_option( $option_id ) ); ?>"
 		/>
 		<?php
 	}
@@ -266,7 +273,7 @@ class Ask_Plugin {
 
 		if ( isset( $attrs['iframe'] ) && 'true' == $attrs['iframe'] ) {
 			return sprintf(
-				'<iframe width="100%" height="%d" src="%s" frameborder="0" hspace="0" vspace="0" marginheight="0" marginwidth="0"></iframe>',
+				'<iframe width="100%%" height="%d" src="%s" frameborder="0" hspace="0" vspace="0" marginheight="0" marginwidth="0"></iframe>',
 				absint( $height ),
 				esc_url( $item_url_base . '.html' )
 			);
