@@ -161,7 +161,7 @@ class Ask_Plugin {
 	public function base_url_callback( $arguments ) {
 		?>
 		<p><?php esc_html_e( 'To use Ask forms in WordPress, you will need to set a Form Base URL, which is where your forms are stored:', 'coral-project-ask' ); ?></p>
-		<?php $this->render_settings_input_field( 'coral_ask_base_url', $arguments['placeholder'] ); ?>
+		<?php $this->render_settings_url_field( 'coral_ask_base_url', $arguments['placeholder'] ); ?>
 		<?php
 	}
 
@@ -176,7 +176,7 @@ class Ask_Plugin {
 	public function admin_url_callback( $arguments ) {
 		?>
 		<p><?php esc_html_e( 'You can also optionally manage your forms in WordPress, by providing the URL where your Ask admin is located:', 'coral-project-ask' ); ?></p>
-		<?php $this->render_settings_input_field( 'coral_ask_admin_url', $arguments['placeholder'] ); ?>
+		<?php $this->render_settings_url_field( 'coral_ask_admin_url', $arguments['placeholder'] ); ?>
 		<?php
 	}
 
@@ -188,7 +188,7 @@ class Ask_Plugin {
 	 * @param string $option_id    Field option id.
 	 * @param string $placeholder  Placeholder text.
 	 */
-	public function render_settings_input_field( $option_id, $placeholder ) {
+	public function render_settings_url_field( $option_id, $placeholder ) {
 		?>
 		<input
 			style="width: 600px; height: 40px;"
