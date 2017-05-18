@@ -33,16 +33,18 @@ class Ask_Plugin {
 	 * @since 1.0.1
 	 */
 	public function create_settings_page() {
-		add_menu_page( 'Ask Forms', 'Ask Forms', 'manage_options', 'ask-forms', array(
+		add_menu_page( __( 'Ask Forms', 'coral_ask' ), __( 'Ask Forms', 'coral_ask' ), 'manage_options', 'ask-forms', array(
 			$this,
 			'render_settings_page',
 		), 'dashicons-list-view', 100 );
-		add_submenu_page( 'ask-forms', 'Ask Settings', 'Ask Settings', 'manage_options', 'ask-forms', array(
+
+		add_submenu_page( 'ask-forms', __( 'Ask Settings', 'coral_ask' ), __( 'Ask Settings', 'coral_ask' ), 'manage_options', 'ask-forms', array(
 			$this,
 			'render_settings_page',
 		), 'dashicons-admin-plugins', 100 );
+
 		if ( get_option( 'admin_url' ) ) {
-			add_submenu_page( 'ask-forms', 'Ask Admin', 'Ask Admin', 'manage_options', 'ask-admin', array(
+			add_submenu_page( 'ask-forms', __( 'Ask Admin', 'coral_ask' ), __( 'Ask Admin', 'coral_ask' ), 'manage_options', 'ask-admin', array(
 				$this,
 				'render_admin_page',
 			), 'dashicons-admin-plugins', 100 );
@@ -55,7 +57,7 @@ class Ask_Plugin {
 	 * @since 1.0.1
 	 */
 	public function setup_sections() {
-		add_settings_section( 'integration', 'About Ask', array( $this, 'section_callback' ), 'ask-settings' );
+		add_settings_section( 'integration', __( 'About Ask', 'coral_ask' ), array( $this, 'section_callback' ), 'ask-settings' );
 	}
 
 	/**
@@ -67,7 +69,7 @@ class Ask_Plugin {
 		$fields = array(
 			array(
 				'uid'         => 'base_url',
-				'label'       => 'Server Base URL',
+				'label'       => __( 'Server Base URL', 'coral_ask' ),
 				'section'     => 'integration',
 				'type'        => 'url',
 				'options'     => false,
@@ -77,7 +79,7 @@ class Ask_Plugin {
 			),
 			array(
 				'uid'         => 'admin_url',
-				'label'       => 'Admin Base URL',
+				'label'       => __( 'Admin Base URL', 'coral_ask' ),
 				'section'     => 'integration',
 				'type'        => 'url',
 				'options'     => false,
@@ -164,7 +166,7 @@ class Ask_Plugin {
 	public function render_settings_page() {
 		?>
 			<div class="wrap">
-				<h2>Ask Settings</h2>
+				<h2><?php esc_html_e( 'Ask Settings', 'coral_ask' ) ?></h2>
 				<form method="post" action="options.php">
 					<?php
 					settings_fields( 'ask-settings' );
@@ -184,7 +186,7 @@ class Ask_Plugin {
 	public function render_admin_page() {
 		?>
 			<div class="wrap">
-				<h2>Ask Admin</h2>
+				<h2><?php esc_html_e( 'Ask Admin', 'coral_ask' ) ?></h2>
 				<iframe width="100%" height="600px" src="<?php echo esc_url( get_option( 'admin_url' ) ); ?>" frameborder="0" hspace="0" vspace="0" marginheight="0" marginwidth="0"></iframe>
 			</div>
 		<?php
