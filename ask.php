@@ -43,7 +43,7 @@ class Ask_Plugin {
 			'render_settings_page',
 		), 'dashicons-admin-plugins', 100 );
 
-		if ( get_option( 'admin_url' ) ) {
+		if ( get_option( 'coral_ask_admin_url' ) ) {
 			add_submenu_page( 'ask-forms', __( 'Ask Admin', 'coral_ask' ), __( 'Ask Admin', 'coral_ask' ), 'manage_options', 'ask-admin', array(
 				$this,
 				'render_admin_page',
@@ -68,7 +68,7 @@ class Ask_Plugin {
 	public function setup_fields() {
 		$fields = array(
 			array(
-				'uid'         => 'base_url',
+				'uid'         => 'coral_ask_base_url',
 				'label'       => __( 'Server Base URL', 'coral_ask' ),
 				'section'     => 'integration',
 				'type'        => 'url',
@@ -78,7 +78,7 @@ class Ask_Plugin {
 				'callback'    => 'base_url_callback',
 			),
 			array(
-				'uid'         => 'admin_url',
+				'uid'         => 'coral_ask_admin_url',
 				'label'       => __( 'Admin Base URL', 'coral_ask' ),
 				'section'     => 'integration',
 				'type'        => 'url',
@@ -139,7 +139,7 @@ class Ask_Plugin {
 	public function base_url_callback( $arguments ) {
 		?>
 			<p>To use Ask forms in WordPress, you will need to set a Form Base URL, which is where your forms are stored:</p>
-			<input style="width: 600px; height: 40px;" name="base_url" placeholder="<?php echo esc_attr( $arguments['placeholder'] ); ?>" id="base_url" type="url" value="<?php echo esc_url( get_option( 'base_url' ) ); ?>" />
+			<input style="width: 600px; height: 40px;" name="coral_ask_base_url" placeholder="<?php echo esc_attr( $arguments['placeholder'] ); ?>" id="coral_ask_base_url" type="url" value="<?php echo esc_url( get_option( 'coral_ask_base_url' ) ); ?>" />
 		<?php
 	}
 
@@ -154,7 +154,7 @@ class Ask_Plugin {
 	public function admin_url_callback( $arguments ) {
 		?>
 			<p>You can also optionally manage your forms in WordPress, by providing the URL where your Ask admin is located:</p>
-			<input style="width: 600px; height: 40px;" name="admin_url" placeholder="<?php echo esc_attr( $arguments['placeholder'] ); ?>" id="admin_url" type="url" value="<?php echo esc_url( get_option( 'admin_url' ) ); ?>" />
+			<input style="width: 600px; height: 40px;" name="coral_ask_admin_url" placeholder="<?php echo esc_attr( $arguments['placeholder'] ); ?>" id="coral_ask_admin_url" type="url" value="<?php echo esc_url( get_option( 'coral_ask_admin_url' ) ); ?>" />
 		<?php
 	}
 
@@ -187,7 +187,7 @@ class Ask_Plugin {
 		?>
 			<div class="wrap">
 				<h2><?php esc_html_e( 'Ask Admin', 'coral_ask' ) ?></h2>
-				<iframe width="100%" height="600px" src="<?php echo esc_url( get_option( 'admin_url' ) ); ?>" frameborder="0" hspace="0" vspace="0" marginheight="0" marginwidth="0"></iframe>
+				<iframe width="100%" height="600px" src="<?php echo esc_url( get_option( 'coral_ask_admin_url' ) ); ?>" frameborder="0" hspace="0" vspace="0" marginheight="0" marginwidth="0"></iframe>
 			</div>
 		<?php
 	}
@@ -211,9 +211,9 @@ class Ask_Plugin {
 		$height = isset( $attrs['height'] ) ? $attrs['height'] : '580';
 		$id     = isset( $attrs['id'] ) ? $attrs['id'] : '';
 		if ( isset( $attrs['iframe'] ) && 'true' == $attrs['iframe'] ) {
-			return '<iframe width="100%" height="' . absint( $height ) . '" src="' . esc_url( get_option( 'base_url' ) ) . sanitize_text_field( $attrs['id'] ) . '.html" frameborder="0" hspace="0" vspace="0" marginheight="0" marginwidth="0"></iframe>';
+			return '<iframe width="100%" height="' . absint( $height ) . '" src="' . esc_url( get_option( 'coral_ask_base_url' ) ) . sanitize_text_field( $attrs['id'] ) . '.html" frameborder="0" hspace="0" vspace="0" marginheight="0" marginwidth="0"></iframe>';
 		} else {
-			return '<div id="ask-' . esc_attr( $type ) . '"></div><script src="' . esc_url( get_option( 'base_url' ) ) . sanitize_text_field( $id ) . '.js"></script>';
+			return '<div id="ask-' . esc_attr( $type ) . '"></div><script src="' . esc_url( get_option( 'coral_ask_base_url' ) ) . sanitize_text_field( $id ) . '.js"></script>';
 		}
 	}
 
