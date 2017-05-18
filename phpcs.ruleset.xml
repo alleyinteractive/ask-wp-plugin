@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ruleset name="Coral Project - Ask">
+	<description>PHP_CodeSniffer standard for the Coral Project - Ask plugin</description>
+	<file>ask.php</file>
+	<rule ref="WordPress" />
+	<rule ref="WordPress-VIP" />
+</ruleset>
