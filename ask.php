@@ -223,7 +223,16 @@ class Ask_Plugin {
 		?>
 		<div class="wrap">
 			<h2><?php esc_html_e( 'Ask Admin', 'coral-project-ask' ) ?></h2>
-			<iframe width="100%" height="600px" src="<?php echo esc_url( get_option( 'coral_ask_admin_url' ) ); ?>" frameborder="0" hspace="0" vspace="0" marginheight="0" marginwidth="0"></iframe>
+			<iframe
+				width="100%"
+				height="600px"
+				src="<?php echo esc_url( get_option( 'coral_ask_admin_url' ) ); ?>"
+				frameborder="0"
+				hspace="0"
+				vspace="0"
+				marginheight="0"
+				marginwidth="0"
+			></iframe>
 		</div>
 		<?php
 	}
